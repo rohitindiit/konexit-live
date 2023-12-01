@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        // Ignore this in your implementation
+        window.isMbscDemo = true;
+    </script>
+
+    <title>
+        Filtering
+    </title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+            body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div mbsc-page class="demo-filtering-values">
+        <div style="height:100%">
+                
+        <div class="mbsc-grid mbsc-form-grid">
+            <div class="mbsc-row">
+                <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                    <label>
+                        Local data
+                        <input mbsc-input id="demo-local-data" data-dropdown="true" data-input-style="box" data-label-style="stacked" placeholder="Please select..." />
+                    </label>
+                </div>
+                <div class="mbsc-col-sm-12 mbsc-col-md-6">
+                    <label>
+                        Remote data
+                        <input mbsc-input id="demo-remote-data" data-dropdown="true" data-input-style="box" data-label-style="stacked" placeholder="Please select..."></select>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+
+    <script>
+        
+            mobiscroll.setOptions({
+        locale: mobiscroll.localeEn,   // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+        theme: 'ios',                  // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'      // More info about themeVariant: https://docs.mobiscroll.com/5-20-0/select#opt-themeVariant
+    });
+    
+    $(function () {
+        var names = [{
+            text: "Abigail Hodges",
+            value: 1
+        }, {
+            text: "Adam Robertson",
+            value: 2
+        }, {
+            text: "Blake Nolan",
+            value: 3
+        }, {
+            text: "Dylan Manning",
+            value: 4
+        }, {
+            text: "Jane Clarkson",
+            value: 5
+        }, {
+            text: "Julian Parr",
+            value: 6
+        }, {
+            text: "Lily Blake",
+            value: 7
+        }, {
+            text: "Luke Wright",
+            value: 8
+        }, {
+            text: "Nathan Poole",
+            value: 9
+        }, {
+            text: "Olivia Vance",
+            value: 10
+        }, {
+            text: "Paul Hudson",
+            value: 11
+        }, {
+            text: "Rose Taylor",
+            value: 12
+        }, {
+            text: "Samantha Martin",
+            value: 13
+        }, {
+            text: "Steven Cameron",
+            value: 14
+        }, {
+            text: "Wanda Mills",
+            value: 15
+        }];
+    
+        // Mobiscroll Select initialization
+        $('#demo-local-data').mobiscroll().select({
+            display: 'anchored',       // Specify display mode like: display: 'bottom' or omit setting to use default
+            data: names,               // More info about data: https://docs.mobiscroll.com/5-20-0/select#opt-data
+            filter: true               // More info about filter: https://docs.mobiscroll.com/5-20-0/select#opt-filter
+        });
+    
+        var inst = $('#demo-remote-data').mobiscroll().select({
+            display: 'anchored',       // Specify display mode like: display: 'bottom' or omit setting to use default
+            filter: true,              // More info about filter: https://docs.mobiscroll.com/5-20-0/select#opt-filter
+            data: [],                  // More info about data: https://docs.mobiscroll.com/5-20-0/select#opt-data
+            onFilter: function (ev) {  // More info about onFilter: https://docs.mobiscroll.com/5-20-0/select#event-onFilter
+                remoteFiltering(ev.filterText);
+                return false;
+            },
+        }).mobiscroll('getInst');
+    
+        function remoteFiltering(filterText) {
+            $.getJSON('https://trial.mobiscroll.com/airports/' + encodeURIComponent(filterText) + '?callback=?', function (data) {
+                var item;
+                var airports = [];
+    
+                for (var i = 0; i < data.length; i++) {
+                    item = data[i];
+                    airports.push({ text: item.name, value: item.code })
+                }
+    
+                inst.setOptions({ data: airports });
+            }, 'jsonp');
+        }
+    
+        remoteFiltering('');
+    
+    });
+    </script>
+
+</body>
+
+</html>

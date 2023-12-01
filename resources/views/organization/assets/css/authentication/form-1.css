@@ -1,0 +1,189 @@
+html, body { height: 100%; }
+body {
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    background: #F8F8F9;
+}
+.form-container {
+    display: flex;
+}
+.form-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.form-form .form-form-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    min-width: 459px;
+    min-height: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.form-form .form-container {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    padding: .71428571rem 2.85714286rem;
+    width: 100%;
+    min-height: 100%;
+}
+.form-form .form-container .form-content {
+    display: block;
+    width: 100%;
+}
+.field-wrapper .fieldinner  {
+	 position: relative;
+}
+.field-wrapper .fieldinner span {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+.form-form .form-form-wrap p.signup-link a {
+    color: #e22028;
+    border-bottom: 1px solid;
+}
+.form-form .form-form-wrap form .field-wrapper.input {
+    position: relative;
+    border-bottom: none;
+}
+.form-form .form-form-wrap form .field-wrapper.input:focus { border: 1px solid #000; }
+
+.form-form .form-form-wrap form .field-wrapper label {
+    color: #1A2D55;
+    font-size: 12px;
+    margin-bottom: 2px;
+    font-weight: 500;
+	
+}
+.form-form .form-form-wrap form .field-wrapper input {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    min-width: 50px;
+    max-width: 635px;
+    width: 100%;
+    height: 44px;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out 0s;
+    color: #1A2D55;
+    font-weight: 500;
+    font-size: 12px;
+    border: 1px solid #E0E6ED;
+    padding: 0px 17px;
+}
+.form-form .form-form-wrap form .field-wrapper input::-webkit-input-placeholder {
+    color: #1A2D55;
+    font-size: 12px;
+	opacity:0.30;
+}
+.form-form .form-form-wrap form .field-wrapper input::-ms-input-placeholder {
+    color: #1A2D55;
+    font-size: 12px;
+	opacity:0.30;
+}
+.form-form .form-form-wrap form .field-wrapper input::-moz-placeholder {
+    color: #1A2D55;
+    font-size: 12px;
+	opacity:0.30;
+}
+.form-form .form-form-wrap form .field-wrapper input:focus { border-bottom: 1px solid #e22028; box-shadow: none; }
+.form-form .form-form-wrap form .field-wrapper button.btn {   
+    min-width: 152px;
+    font-size: 12px;
+    height: 39px;
+    border-radius:10px;	}
+.form-form .form-form-wrap form .field-wrapper a.forgot-pass-link:hover {
+	color:#E22028
+}
+.form-form .form-form-wrap form .field-wrapper a.forgot-pass-link {
+    width: 100%;
+    font-weight: 500;
+    color: rgba(26, 45, 85, 0.30);
+    text-align: center;
+    display: block;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-top: 15px;
+    text-decoration: none;
+}
+.form-image:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #FF000B 0%, #2B0406 100%);
+    opacity: 0.50;
+}
+.form-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    min-height: auto;
+    height: 100vh;
+    width: 50%;
+}
+.form-image .l-image img{
+	width: 123px;
+    position: relative;
+    z-index: 9;
+}
+.form-image .l-image {
+    background-image: url(../../img/loginbg.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #060818;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-form .form-container .form-content p.signup-link {
+	 color:#33475B;
+	 font-size: 12px;
+	 font-weight:400;
+	  margin-bottom: 50px;
+	 opacity:0.80;
+	 line-height:140%
+}
+.form-form .form-container .form-content h1 {
+    color: #33475B;
+    font-weight: bold;
+    font-size: 28px;
+}
+.mt-35 {
+    margin-top: 35px;
+}
+@media (max-width: 991px) {
+    .form-form { width: 100%; }
+    .form-form .form-form-wrap { min-width: auto; }
+    .form-image { display: none; }
+}
+@media (max-width: 575px) {
+    .form-form .form-form-wrap form .field-wrapper.toggle-pass { margin-bottom: 28px; }
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-form .form-form-wrap { width: 100%; }
+    .form-form .form-container { height: 100%; }
+}
